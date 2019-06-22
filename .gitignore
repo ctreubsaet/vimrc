@@ -1,0 +1,4 @@
+vim/autoload/*
+vim/colors/*
+vim/plugged/*
+vim/sessions/*
