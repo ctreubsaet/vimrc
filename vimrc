@@ -66,7 +66,7 @@ let FILE_WIKI = DIRECTORY_USER . '/' . 'wiki.vim'
 let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let URL_COLORSCHEME = 'https://raw.githubusercontent.com/jnurmine/zenburn/master/colors/zenburn.vim'
 
-let PLUGIN_FZF = '~/.fzf'
+let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
 let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
 let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
