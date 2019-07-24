@@ -21,6 +21,7 @@
 "     * toggles a distraction-free environment.
 "
 " Sections:
+"   -> DEPENDENCIES
 "   -> VARIABLES
 "   -> INSTALLATION
 "   -> SETTINGS
@@ -31,6 +32,19 @@
 "   -> APPEARANCE
 
 set nocompatible
+
+" +----------------------------------------------------------------------------+
+" |                              DEPENDENCIES                                  |
+" +----------------------------------------------------------------------------+
+
+" Note: fzf needs to be already installed for the fzf plugins.
+" Note: UltiSnips requires Python 3.x.
+" Note: UltiSnips requires the absolute path to the personal snippet directory.
+" Note: UltiSnips has reserved the directory name 'snippets' for its own usage, so I
+"       named the personal snippet directory to 'snippers'.
+" Note: FILE_WIKI contains the relative path to each wiki in an environmental variable.
+"       These variables are defined in the .profile file of your home directory.
+" Note: Curl is required to download the plugin manager and the colorscheme.
 
 " +----------------------------------------------------------------------------+
 " |                               VARIABLES                                    |
@@ -62,13 +76,6 @@ let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 
-" Note: fzf needs to be already installed for the fzf plugins.
-" Note: UltiSnips requires the absolute path to the personal snippet directory.
-" Note: UltiSnips has reserved the name 'snippets' for its own usage, so I
-"       named the directory 'snippers'.
-" Note: FILE_WIKI contains the relative path to each wiki in an environmental variable.
-"       These variables are defined in the .profile file of your home directory.
-
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
 " +----------------------------------------------------------------------------+
@@ -94,9 +101,6 @@ if has("unix")
     execute printf('!curl -fLo %s %s', FILE_COLORSCHEME, URL_COLORSCHEME)
   endif
 endif
-
-" Note: Curl is required to download the plugin manager and the colorscheme.
-" Note: UltiSnips requires Python 3.x.
 
 " +----------------------------------------------------------------------------+
 " |                                SETTINGS                                    |
