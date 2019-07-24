@@ -54,7 +54,6 @@ let FILE_WIKI = DIRECTORY_USER . '/' . 'wiki.vim'
 let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let URL_COLORSCHEME = 'https://raw.githubusercontent.com/jnurmine/zenburn/master/colors/zenburn.vim'
 
-let PLUGIN_NERDTREE = 'scrooloose/nerdtree'
 let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
 let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
 let PLUGIN_WIKI = 'vimwiki/vimwiki'
@@ -166,8 +165,6 @@ set foldmethod=indent               " fold with indentation
 " +----------------------------------------------------------------------------+
 
 call plug#begin(DIRECTORY_PLUGINS)
-  " NERDTree is a file system explorer for navigating and managing files.
-  Plug PLUGIN_NERDTREE
   " vim-airline creates a more informative status line.
   Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
   " vimwiki creates a personal wiki and boosts the markdown editing inside of it.
@@ -179,20 +176,6 @@ call plug#begin(DIRECTORY_PLUGINS)
   " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
-
-" PLUGIN_NERDTREE {
-  "  Minimalize the UI of NERDTree.
-  let g:NERDTreeMinimalUI = 1
-
-  " Close NERDTree after opening a file.
-  let g:NERDTreeQuitOnOpen = 1
-
-  " Close the buffer when the file is deleted with NERDTree.
-  let g:NERDTreeAutoDeleteBuffer = 1
-
-  " Show hidden files by default.
-  let g:NERDTreeShowHidden = 1
-" }
 
 " PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
   " Always show the status line.
@@ -358,9 +341,6 @@ let mapleader=' ' " <space>
 " }
 
 " PLUGINS {
-  " PLUGIN_NERDTREE
-  nnoremap <leader>n :NERDTreeToggle<CR>
-
   " PLUGIN_GOYO
   nnoremap <leader>g :Goyo<CR>
 
