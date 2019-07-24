@@ -266,9 +266,6 @@ let mapleader=' ' " <space>
 
   " Open the configuration of the current filetype.
   autocmd BufEnter * execute 'nnoremap <leader>cf :vsplit ' . s:getConfiguration() . '<CR>'
-
-  " Open the dictionary of the current filetype.
-  autocmd BufEnter * execute 'nnoremap <leader>cd :vsplit ' . s:getDictionary() . '<CR>'
 " }
 
 " SETTINGS {
