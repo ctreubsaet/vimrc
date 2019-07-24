@@ -27,7 +27,6 @@
 "   -> EDITOR
 "   -> PLUGINS
 "   -> FILETYPES
-"   -> DICTIONARIES
 "   -> SHORTCUTS
 "   -> APPEARANCE
 
@@ -41,7 +40,6 @@ let DIRECTORY_VIM = $HOME . '/' . '.vim'
 let DIRECTORY_AUTOLOAD = DIRECTORY_VIM . '/' . 'autoload'
 let DIRECTORY_PLUGINS = DIRECTORY_VIM . '/' . 'plugged'
 let DIRECTORY_FILETYPES = DIRECTORY_VIM . '/' . 'filetypes'
-let DIRECTORY_DICTIONARIES = DIRECTORY_VIM . '/' . 'dictionaries'
 let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
 let DIRECTORY_USER = DIRECTORY_VIM . '/' . 'user'
@@ -107,7 +105,7 @@ set termencoding=utf-8
 
 " Files and buffers
 set autoread                        " reload file when changed outside of Vim
-set path=.,**                       " set path to directory of current file
+set path=.,**                       " set directory path to current file
 set hidden                          " hide buffer when abandoned
 set nobackup                        " no backup when overwriting file
 set nowritebackup                   " no backup when overwriting file
@@ -252,26 +250,7 @@ endfunction
 
 " When opening a file, load the configuration of its file type.
 autocmd FileType * call s:loadLocalConfiguration(s:getConfiguration())
-
-" +----------------------------------------------------------------------------+
-" |                              DICTIONARIES                                  |
-" +----------------------------------------------------------------------------+
-
-" Get the dictionary of the current filetype.
-function! s:getDictionary()
-  return g:DIRECTORY_DICTIONARIES . '/' . &filetype . '.txt'
-endfunction
-
-" Check and apply the dictionary for the current filetype.
-function! s:loadLocalDictionary(dictionary)
-  if filereadable(a:dictionary)
-    execute 'setlocal dict+=' . a:dictionary
-  endif
-endfunction
-
-" When opening a file, load the dictionary of its file type.
-autocmd FileType * call s:loadLocalDictionary(s:getDictionary())
-
+"
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
 " +----------------------------------------------------------------------------+
