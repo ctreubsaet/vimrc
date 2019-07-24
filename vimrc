@@ -52,6 +52,8 @@ let FILE_WIKI = DIRECTORY_USER . '/' . 'wiki.vim'
 let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let URL_COLORSCHEME = 'https://raw.githubusercontent.com/jnurmine/zenburn/master/colors/zenburn.vim'
 
+let PLUGIN_FZF = '~/.fzf'
+let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
 let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
 let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
 let PLUGIN_WIKI = 'vimwiki/vimwiki'
@@ -60,6 +62,7 @@ let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 
+" Note: fzf needs to be already installed for the fzf plugins.
 " Note: UltiSnips requires the absolute path to the personal snippet directory.
 " Note: UltiSnips has reserved the name 'snippets' for its own usage, so I
 "       named the directory 'snippers'.
@@ -163,6 +166,10 @@ set foldmethod=indent               " fold with indentation
 " +----------------------------------------------------------------------------+
 
 call plug#begin(DIRECTORY_PLUGINS)
+  " fzf is a command-line fuzzy finder for searching through files, buffers and lists.
+  Plug PLUGIN_FZF
+  " fzf is a bundle of fzf-based commands and mappings.
+  Plug PLUGIN_FZF_VIM
   " vim-airline creates a more informative status line.
   Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
   " vimwiki creates a personal wiki and boosts the markdown editing inside of it.
