@@ -78,20 +78,20 @@ if has("unix")
   let directories = [ DIRECTORY_AUTOLOAD, DIRECTORY_PLUGINS, DIRECTORY_SESSIONS, DIRECTORY_COLORS ]
 
   for directory in directories
-    if empty(glob(directory))
+    if !(isdirectory(directory))
       call mkdir(directory, 'p')
     endif
   endfor
 
   " Download and install the plugin manager and the plugins.
-  if empty(glob(FILE_PLUGIN_MANAGER))
-    execute '!curl -fLo ' . FILE_PLUGIN_MANAGER . ' ' . URL_PLUGIN_MANAGER
+  if !(filereadable(FILE_PLUGIN_MANAGER))
+    execute printf('!curl -fLo %s %s', FILE_PLUGIN_MANAGER, URL_PLUGIN_MANAGER)
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
 
   " Download and install the color scheme.
-  if empty(glob(FILE_COLORSCHEME))
-    execute '!curl -fLo ' . FILE_COLORSCHEME . ' ' . URL_COLORSCHEME
+  if !(filereadable(FILE_COLORSCHEME))
+    execute printf('!curl -fLo %s %s', FILE_COLORSCHEME, URL_COLORSCHEME)
   endif
 endif
 
