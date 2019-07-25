@@ -80,26 +80,24 @@ let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 " |                              INSTALLATION                                  |
 " +----------------------------------------------------------------------------+
 
-if has("unix")
-  " Create the full directory structure.
-  let directories = [ DIRECTORY_AUTOLOAD, DIRECTORY_PLUGINS, DIRECTORY_SESSIONS, DIRECTORY_COLORS ]
+" Create the full directory structure.
+let directories = [ DIRECTORY_AUTOLOAD, DIRECTORY_PLUGINS, DIRECTORY_SESSIONS, DIRECTORY_COLORS ]
 
-  for directory in directories
-    if !(isdirectory(directory))
-      call mkdir(directory, 'p')
-    endif
-  endfor
-
-  " Download and install the plugin manager and the plugins.
-  if !(filereadable(FILE_PLUGIN_MANAGER))
-    execute printf('!curl -fLo %s %s', FILE_PLUGIN_MANAGER, URL_PLUGIN_MANAGER)
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+for directory in directories
+  if !(isdirectory(directory))
+    call mkdir(directory, 'p')
   endif
+endfor
 
-  " Download and install the color scheme.
-  if !(filereadable(FILE_COLORSCHEME))
-    execute printf('!curl -fLo %s %s', FILE_COLORSCHEME, URL_COLORSCHEME)
-  endif
+" Download and install the plugin manager and the plugins.
+if !(filereadable(FILE_PLUGIN_MANAGER))
+  execute printf('!curl -fLo %s %s', FILE_PLUGIN_MANAGER, URL_PLUGIN_MANAGER)
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Download and install the color scheme.
+if !(filereadable(FILE_COLORSCHEME))
+  execute printf('!curl -fLo %s %s', FILE_COLORSCHEME, URL_COLORSCHEME)
 endif
 
 " +----------------------------------------------------------------------------+
