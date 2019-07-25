@@ -282,22 +282,7 @@ let mapleader=' ' " <space>
     " Navigate buffers
     nnoremap <leader>l :bnext<CR>
     nnoremap <leader>h :bprevious<CR>
-
-    " Find files (with path)
-    nnoremap <leader>f :find *
-    nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
-    nnoremap <leader>s :sfind *
-    nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
-    nnoremap <leader>v :vert sfind *
-    nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
-
-    " Find buffers (with wildcharm)
-    nnoremap <leader>b :buffer <C-z><S-Tab>
-    nnoremap <leader>B :vert sbuffer <C-z><S-Tab>
   " }
-
-  " Registers
-  nnoremap <leader>r :reg<cr>
 
   " Sessions {
     " Look up and load a previously saved session.
