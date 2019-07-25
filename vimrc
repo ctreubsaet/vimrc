@@ -280,8 +280,8 @@ let mapleader=' ' " <space>
 " SETTINGS {
   " Files and buffers {
     " Navigate buffers
-    nnoremap <leader>l :bnext<CR>
-    nnoremap <leader>h :bprevious<CR>
+    nnoremap [b :bprevious<CR>
+    nnoremap ]b :bnext<CR>
   " }
 
   " Sessions {
