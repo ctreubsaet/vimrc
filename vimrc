@@ -168,9 +168,9 @@ set foldmethod=indent               " fold with indentation
 " +----------------------------------------------------------------------------+
 
 call plug#begin(DIRECTORY_PLUGINS)
-  " fzf is a command-line fuzzy finder for searching through files, buffers and lists.
+  " fzf is a command-line fuzzy finder with a plugin to integrate with Vim.
   Plug PLUGIN_FZF
-  " fzf is a bundle of fzf-based commands and mappings.
+  " fzf vim is a bundle of fzf-based commands and mappings.
   Plug PLUGIN_FZF_VIM
   " vim-airline creates a more informative status line.
   Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
