@@ -326,8 +326,20 @@ let mapleader=' ' " <space>
 " }
 
 " PLUGINS {
-  " PLUGIN_GOYO
-  nnoremap <leader>g :Goyo<CR>
+  " PLUGIN_FZF_VIM {
+    nnoremap <Bslash>r :Rg<CR>
+    nnoremap <Bslash>b :Buffers<CR>
+    nnoremap <Bslash>l :Lines<CR>
+    nnoremap <Bslash>m :Marks<CR>
+    nnoremap <Bslash>s :Snippets<CR>
+    nnoremap <Bslash>h :History<CR>
+    nnoremap <Bslash>: :History:<CR>
+    nnoremap <Bslash>/ :History/<CR>
+  " }
+  "
+  " PLUGIN_GOYO {
+    nnoremap <leader>g :Goyo<CR>
+  " }
 
   " PLUGIN_ULTISNIPS {
     let g:UltiSnipsExpandTrigger = '<tab>'
