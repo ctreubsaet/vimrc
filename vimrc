@@ -258,13 +258,13 @@ let mapleader=' ' " <space>
 
 " Files {
   " Open the vimrc file.
-  nnoremap <leader>cv :e $MYVIMRC<CR>
+  nnoremap <leader>fv :e $MYVIMRC<CR>
 
-  " Reload the vimrc file.
-  nnoremap <leader>cr :source $MYVIMRC<CR>
+  " Apply the vimrc file.
+  nnoremap <leader>fr :source $MYVIMRC<CR>
 
   " Open the configuration of the current filetype.
-  autocmd BufEnter * execute 'nnoremap <leader>cf :vsplit ' . s:getConfiguration() . '<CR>'
+  autocmd BufEnter * execute 'nnoremap <leader>ff :vsplit ' . s:getConfiguration() . '<CR>'
 " }
 
 " Buffers {
