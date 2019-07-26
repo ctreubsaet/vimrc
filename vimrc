@@ -214,6 +214,7 @@ call plug#end()
 " }
 
 " PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
+  let g:airline#extensions#tabline#enabled = 1
 " }
 
 " PLUGIN_GOYO {
