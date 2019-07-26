@@ -280,6 +280,14 @@ let mapleader=' ' " <space>
     nnoremap ]b :bnext<CR>
   " }
 
+  " Jumplist
+  nnoremap [j <C-I>
+  nnoremap ]j <C-O>
+
+  " Changelist
+  nnoremap [c g;
+  nnoremap ]c g,
+
   " Sessions {
     " Look up and load a previously saved session.
     nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS.'/*'<CR>
