@@ -60,11 +60,11 @@ let DIRECTORY_USER = DIRECTORY_VIM . '/' . 'user'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 
 let FILE_PLUGIN_MANAGER = DIRECTORY_AUTOLOAD . '/' . 'plug.vim'
-let FILE_COLORSCHEME = DIRECTORY_COLORS . '/' . 'zenburn.vim'
+let FILE_COLORSCHEME = DIRECTORY_COLORS . '/' . 'sierra.vim'
 let FILE_WIKI = DIRECTORY_USER . '/' . 'wiki.vim'
 
 let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let URL_COLORSCHEME = 'https://raw.githubusercontent.com/jnurmine/zenburn/master/colors/zenburn.vim'
+let URL_COLORSCHEME = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim'
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
@@ -334,7 +334,7 @@ let mapleader=' ' " <space>
 " |                              APPEARANCE                                    |
 " +----------------------------------------------------------------------------+
 
-colors zenburn
+colorscheme sierra
 
 " GUI {
   if has('gui_running')
