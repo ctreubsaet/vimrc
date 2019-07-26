@@ -184,14 +184,6 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
 
-" PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
-  " Always show the status line.
-  set laststatus=2
-
-  " Display current user and hostname.
-  let g:airline_section_b = $USER . '@' . '%{hostname()}'
-" }
-
 " PLUGIN_WIKI {
   " Disable wiki functionality for regular markdown files.
   let g:vimwiki_global_ext = 0
@@ -219,6 +211,9 @@ call plug#end()
 
   " Open the UltiSnipsEdit in a vertical buffer.
   let g:UltiSnipsEditSplit = "vertical"
+" }
+
+" PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
 " }
 
 " PLUGIN_GOYO {
