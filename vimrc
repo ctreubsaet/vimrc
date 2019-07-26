@@ -286,10 +286,10 @@ let mapleader=' ' " <space>
 
   " Sessions {
     " Look up and load a previously saved session.
-    nnoremap <leader>al :source <C-R>=DIRECTORY_SESSIONS.'/*'<CR>
+    nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS.'/*'<CR>
 
     " Save a session.
-    nnoremap <leader>as :mksession! <C-R>=DIRECTORY_SESSIONS.'/'<CR>
+    nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS.'/'<CR>
   " }
 " }
 
