@@ -68,13 +68,13 @@ let URL_COLORSCHEME = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
-let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
-let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
 let PLUGIN_WIKI = 'vimwiki/vimwiki'
 let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
 let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
+let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
+let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
 
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
@@ -172,8 +172,6 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_FZF
   " fzf vim is a bundle of fzf-based commands and mappings.
   Plug PLUGIN_FZF_VIM
-  " vim-airline creates a more informative status line.
-  Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
   " vimwiki creates a personal wiki and boosts the markdown editing inside of it.
   Plug PLUGIN_WIKI
   " UltiSnips is a framework for code snippets.
@@ -182,6 +180,8 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_SNIPPETS
   " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
+  " vim-airline creates a more informative status line.
+  Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
 call plug#end()
 
 " PLUGIN_WIKI {
@@ -213,10 +213,6 @@ call plug#end()
   let g:UltiSnipsEditSplit = "vertical"
 " }
 
-" PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
-  let g:airline#extensions#tabline#enabled = 1
-" }
-
 " PLUGIN_GOYO {
   " Toggle PLUGIN_LIMELIGHT together with PLUGIN_GOYO.
   function! s:goyo_enter()
@@ -235,6 +231,10 @@ call plug#end()
   " Set colors if colorscheme is unsupported.
   let g:limelight_conceal_ctermfg = 'gray'
   let g:limelight_conceal_ctermfg = 240
+" }
+
+" PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
+  let g:airline#extensions#tabline#enabled = 1
 " }
 
 " +----------------------------------------------------------------------------+
