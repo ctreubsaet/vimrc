@@ -262,7 +262,7 @@ autocmd FileType * call s:loadLocalConfiguration(s:getConfiguration())
 
 let mapleader=' ' " <space>
 
-" File shortcuts {
+" Files {
   " Open the vimrc file.
   nnoremap <leader>cv :e $MYVIMRC<CR>
 
@@ -273,12 +273,10 @@ let mapleader=' ' " <space>
   autocmd BufEnter * execute 'nnoremap <leader>cf :vsplit ' . s:getConfiguration() . '<CR>'
 " }
 
-" SETTINGS {
-  " Files and buffers {
-    " Navigate buffers
-    nnoremap [b :bprevious<CR>
-    nnoremap ]b :bnext<CR>
-  " }
+" Buffers {
+  " Navigate buffers
+  nnoremap [b :bprevious<CR>
+  nnoremap ]b :bnext<CR>
 
   " Jumplist
   nnoremap [j <C-I>
@@ -287,17 +285,17 @@ let mapleader=' ' " <space>
   " Changelist
   nnoremap [c g;
   nnoremap ]c g,
-
-  " Sessions {
-    " Look up and load a previously saved session.
-    nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS.'/*'<CR>
-
-    " Save a session.
-    nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS.'/'<CR>
-  " }
 " }
 
-" EDITOR {
+" Sessions {
+  " Look up and load a previously saved session.
+  nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS.'/*'<CR>
+
+  " Save a session.
+  nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS.'/'<CR>
+" }
+
+" Editor {
   " Toggle spellchecker.
   nnoremap <leader>p :setlocal spell!<CR>
 
@@ -314,7 +312,7 @@ let mapleader=' ' " <space>
   inoremap <C-f> <C-X><C-N>
 " }
 
-" PLUGINS {
+" Plugins {
   " PLUGIN_FZF_VIM {
     nnoremap <Bslash>r :Rg<CR>
     nnoremap <Bslash>f :Files<CR>
@@ -326,15 +324,15 @@ let mapleader=' ' " <space>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
   " }
-  "
-  " PLUGIN_GOYO {
-    nnoremap <leader>g :Goyo<CR>
-  " }
 
   " PLUGIN_ULTISNIPS {
     let g:UltiSnipsExpandTrigger = '<tab>'
     let g:UltiSnipsJumpForwardTrigger = '<tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+  " }
+
+  " PLUGIN_GOYO {
+    nnoremap <leader>g :Goyo<CR>
   " }
 " }
 
