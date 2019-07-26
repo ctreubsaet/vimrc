@@ -313,6 +313,7 @@ let mapleader=' ' " <space>
 " PLUGINS {
   " PLUGIN_FZF_VIM {
     nnoremap <Bslash>r :Rg<CR>
+    nnoremap <Bslash>f :Files<CR>
     nnoremap <Bslash>b :Buffers<CR>
     nnoremap <Bslash>l :Lines<CR>
     nnoremap <Bslash>m :Marks<CR>
