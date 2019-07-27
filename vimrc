@@ -33,12 +33,15 @@
 " |                              DEPENDENCIES                                  |
 " +----------------------------------------------------------------------------+
 
-" Note: fzf needs to be already installed for the fzf plugins.
-" Note: UltiSnips requires Python 3.x.
-" Note: UltiSnips requires the absolute path to the personal snippet directory.
-" Note: UltiSnips has reserved the directory name 'snippets' for its own usage, so I
-"       named the personal snippet directory to 'snippers'.
 " Note: Curl is required to download the plugin manager and the colorscheme.
+" Note: Fzf is required to use the fzf plugins.
+" Note: The fzf plugin is already included in the fzf installation and referred 
+"       from the home directory.
+" Note: The fzf vim plugin is dependent on the fzf plugin.
+" Note: The UltiSnips plugin requires Python 3.x.
+" Note: The UltiSnips plugin requires the absolute path to the personal snippet directory.
+" Note: The UltiSnips plugin has reserved the directory name 'snippets' for its own usage,
+"       so I named the personal snippet directory to 'snippers'.
 
 " +----------------------------------------------------------------------------+
 " |                               VARIABLES                                    |
