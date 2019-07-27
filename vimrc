@@ -201,6 +201,7 @@ call plug#end()
 " }
 
 " PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
+  " Enable the tabline bar to see the buffers on top of the screen.
   let g:airline#extensions#tabline#enabled = 1
 " }
 
@@ -233,7 +234,7 @@ let mapleader = ';'
   " Open the vimrc file.
   nnoremap <leader>fv :e $MYVIMRC<CR>
 
-  " Apply the vimrc file.
+  " Reload the vimrc file.
   nnoremap <leader>fr :source $MYVIMRC<CR>
 
   " Open the configuration of the current filetype.
