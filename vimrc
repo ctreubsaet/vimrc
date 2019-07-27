@@ -249,8 +249,8 @@ let mapleader = ';'
   nnoremap ]b :bnext<CR>
 
   " Jumplist
-  nnoremap [j <C-I>
-  nnoremap ]j <C-O>
+  nnoremap [j <C-O>
+  nnoremap ]j <C-I>
 
   " Changelist
   nnoremap [c g;
