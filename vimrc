@@ -16,8 +16,6 @@
 "   The vimrc contains the following features:
 "     * built to have a separate configuration for each filetype.
 "     * easier handling of files and buffers.
-"     * enables a personal wiki with markdown inside of Vim.
-"     * boosts markdown editing with (simple) autocompletion and snippets.
 "     * toggles a distraction-free environment.
 "
 " Sections:
@@ -42,8 +40,6 @@ set nocompatible
 " Note: UltiSnips requires the absolute path to the personal snippet directory.
 " Note: UltiSnips has reserved the directory name 'snippets' for its own usage, so I
 "       named the personal snippet directory to 'snippers'.
-" Note: FILE_WIKI contains the relative path to each wiki in an environmental variable.
-"       These variables are defined in the .profile file of your home directory.
 " Note: Curl is required to download the plugin manager and the colorscheme.
 
 " +----------------------------------------------------------------------------+
@@ -56,19 +52,16 @@ let DIRECTORY_PLUGINS = DIRECTORY_VIM . '/' . 'plugged'
 let DIRECTORY_FILETYPES = DIRECTORY_VIM . '/' . 'filetypes'
 let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
-let DIRECTORY_USER = DIRECTORY_VIM . '/' . 'user'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 
 let FILE_PLUGIN_MANAGER = DIRECTORY_AUTOLOAD . '/' . 'plug.vim'
 let FILE_COLORSCHEME = DIRECTORY_COLORS . '/' . 'sierra.vim'
-let FILE_WIKI = DIRECTORY_USER . '/' . 'wiki.vim'
 
 let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 let URL_COLORSCHEME = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim'
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
-let PLUGIN_WIKI = 'vimwiki/vimwiki'
 let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
 let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
@@ -172,8 +165,6 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_FZF
   " fzf vim is a bundle of fzf-based commands and mappings.
   Plug PLUGIN_FZF_VIM
-  " vimwiki creates a personal wiki and boosts the markdown editing inside of it.
-  Plug PLUGIN_WIKI
   " UltiSnips is a framework for code snippets.
   Plug PLUGIN_ULTISNIPS
   " vim-snippets is a community-maintained repository of common code snippets.
@@ -184,30 +175,12 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
 call plug#end()
 
-" PLUGIN_WIKI {
-  " Disable wiki functionality for regular markdown files.
-  let g:vimwiki_global_ext = 0
-
-  " Load the wiki from a user-defined file.
-  function! s:loadWiki()
-    let wiki = g:FILE_WIKI
-
-    if filereadable(wiki)
-      execute 'source ' . wiki
-    endif
-  endfunction
-
-  call s:loadWiki()
-
 " PLUGIN_ULTISNIPS | PLUGIN_SNIPPETS {
   " Add the personal snippet directory.
   let g:UltiSnipsSnippetDir = DIRECTORY_SNIPPETS
 
   " Put priority of the personal snippets before those in PLUGIN_SNIPPETS.
   let g:UltiSnipsSnippetDirectories = [DIRECTORY_SNIPPETS, "UltiSnips"]
-
-  " Remove the <tab> mapping of PLUGIN_WIKI to not override the <tab> mapping of PLUGIN_ULTISNIPS.
-  let g:vimwiki_table_mappings = 0
 
   " Open the UltiSnipsEdit in a vertical buffer.
   let g:UltiSnipsEditSplit = "vertical"
