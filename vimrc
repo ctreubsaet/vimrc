@@ -99,8 +99,9 @@ endif
 " +----------------------------------------------------------------------------+
 
 " Encoding
-set encoding=utf-8
-set termencoding=utf-8
+set encoding=utf-8                  " the encoding used inside Vim
+set fileencoding=utf-8              " the encoding written to the file
+set termencoding=utf-8              " the encoding used for the terminal
 
 " Files and buffers
 set autoread                        " reload file when changed outside of Vim
