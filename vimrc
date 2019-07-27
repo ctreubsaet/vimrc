@@ -52,11 +52,8 @@ let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 
-let FILE_PLUGIN_MANAGER = DIRECTORY_AUTOLOAD . '/' . 'plug.vim'
-let FILE_COLORSCHEME = DIRECTORY_COLORS . '/' . 'sierra.vim'
-
-let URL_PLUGIN_MANAGER = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let URL_COLORSCHEME = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim'
+let PLUGIN_MANAGER_FILE = DIRECTORY_AUTOLOAD . '/' . 'plug.vim'
+let PLUGIN_MANAGER_URL = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
@@ -66,6 +63,9 @@ let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
 let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
+
+let COLORSCHEME_FILE = DIRECTORY_COLORS . '/' . 'sierra.vim'
+let COLORSCHEME_URL = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim'
 
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
@@ -81,14 +81,14 @@ for directory in directories
 endfor
 
 " Download and install the plugin manager and the plugins.
-if !(filereadable(FILE_PLUGIN_MANAGER))
-  execute printf('!curl -fLo %s %s', FILE_PLUGIN_MANAGER, URL_PLUGIN_MANAGER)
+if !(filereadable(PLUGIN_MANAGER_FILE))
+  execute printf('!curl -fLo %s %s', PLUGIN_MANAGER_FILE, PLUGIN_MANAGER_URL)
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Download and install the color scheme.
-if !(filereadable(FILE_COLORSCHEME))
-  execute printf('!curl -fLo %s %s', FILE_COLORSCHEME, URL_COLORSCHEME)
+if !(filereadable(COLORSCHEME_FILE))
+  execute printf('!curl -fLo %s %s', COLORSCHEME_FILE, COLORSCHEME_URL)
 endif
 
 " +----------------------------------------------------------------------------+
