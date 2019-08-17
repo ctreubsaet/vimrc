@@ -11,12 +11,14 @@
 " Github: https://github.com/ctreubsaet
 "
 " Description:
-"   This vimrc is primarily built for writing and organizing plain text.
+"   This vimrc is primarily built for writing plain text and light scripting.
 "
 "   The vimrc contains the following features:
-"     * built to have a separate configuration for each filetype.
-"     * easier handling of files and buffers.
-"     * toggles a distraction-free environment.
+"     * automatically installs plug.vim and plugins.
+"     * loads a separate configuration for each filetype.
+"     * uses FZF for easier handling of files and buffers.
+"     * uses UltiSnips for code snippets.
+"     * uses Goyo and Limelight to toggle a distraction-free environment.
 "
 " Sections:
 "   -> DEPENDENCIES
@@ -33,7 +35,7 @@
 " |                              DEPENDENCIES                                  |
 " +----------------------------------------------------------------------------+
 
-" Note: Curl is required to download the plugin manager and the colorscheme.
+" Note: Curl is required to download the plugin manager.
 " Note: Fzf is required to use the fzf plugins.
 " Note: The fzf plugin is already included in the fzf installation and referred
 "       from the home directory.
@@ -64,11 +66,6 @@ let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
 let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
-let PLUGIN_AIRLINE = 'vim-airline/vim-airline'
-let PLUGIN_AIRLINE_THEMES = 'vim-airline/vim-airline-themes'
-
-let COLORSCHEME_FILE = DIRECTORY_COLORS . '/' . 'sierra.vim'
-let COLORSCHEME_URL = 'https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim'
 
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
@@ -87,11 +84,6 @@ endfor
 if !(filereadable(PLUGIN_MANAGER_FILE))
   execute printf('!curl -fLo %s %s', PLUGIN_MANAGER_FILE, PLUGIN_MANAGER_URL)
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-" Download and install the color scheme.
-if !(filereadable(COLORSCHEME_FILE))
-  execute printf('!curl -fLo %s %s', COLORSCHEME_FILE, COLORSCHEME_URL)
 endif
 
 " +----------------------------------------------------------------------------+
@@ -133,6 +125,12 @@ set sessionoptions=buffers          " only save the buffers of a session.
 " |                                EDITOR                                      |
 " +----------------------------------------------------------------------------+
 
+" Formatting
+set list                            " show whitespace characters
+set listchars-=eol:$                " don't show end of line character
+set listchars+=tab:>-               " show tabs and preserve their alignment
+set listchars+=trail:-              " show trailing whitespace
+
 " Line numbers
 set relativenumber                  " show relative line numbers
 set number                          " show current line number
@@ -150,9 +148,9 @@ set smartcase                       " search matches are case sensitive if any u
 " Indentation
 set autoindent                      " enable automatic indention
 set expandtab                       " replace a tab with spaces
-set tabstop=2                       " a tab is two spaces
-set softtabstop=2                   " untab with two spaces
-set shiftwidth=2                    " autoident with two spaces
+set tabstop=4                       " a tab is two spaces
+set softtabstop=4                   " untab with two spaces
+set shiftwidth=4                    " autoindent with two spaces
 
 " Code folding
 set foldenable                      " enable code folding
@@ -173,8 +171,6 @@ call plug#begin(DIRECTORY_PLUGINS)
   Plug PLUGIN_SNIPPETS
   " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
-  " vim-airline creates a more informative status line.
-  Plug PLUGIN_AIRLINE | Plug PLUGIN_AIRLINE_THEMES
 call plug#end()
 
 " PLUGIN_ULTISNIPS | PLUGIN_SNIPPETS {
@@ -200,11 +196,6 @@ call plug#end()
 
   autocmd! User GoyoEnter nested call <SID>goyo_enter()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
-" }
-
-" PLUGIN_AIRLINE | PLUGIN_AIRLINE_THEMES {
-  " Enable the tabline bar to see the buffers on top of the screen.
-  let g:airline#extensions#tabline#enabled = 1
 " }
 
 " +----------------------------------------------------------------------------+
@@ -243,6 +234,14 @@ let mapleader = ';'
   autocmd BufEnter * execute 'nnoremap <leader>ff :vsplit ' . s:getConfiguration() . '<CR>'
 " }
 
+" Windows {
+  " Split navigation
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H>
+" }
+
 " Buffers {
   " Navigate buffers
   nnoremap [b :bprevious<CR>
@@ -266,17 +265,36 @@ let mapleader = ';'
 " }
 
 " Editor {
-  " Toggle spellchecker.
-  nnoremap <leader>p :setlocal spell!<CR>
+  " Spellchecker {
+      " Toggle spellchecker
+      nnoremap <leader>p :setlocal spell!<CR>
 
-  " Turn off search highlight.
-  nnoremap <silent> <leader><CR> :noh<CR>
+      " Quickly fix a misspelled word.
+      nnoremap <leader>z z=1<CR><CR>
+  " }
 
-  " Split navigation
-  nnoremap <C-J> <C-W><C-J>
-  nnoremap <C-K> <C-W><C-K>
-  nnoremap <C-L> <C-W><C-L>
-  nnoremap <C-H> <C-W><C-H>
+  " Searching {
+    " Center the line while moving through the search result.
+    nnoremap n nzz
+    nnoremap N Nzz
+    nnoremap * *zz
+    nnoremap # #zz
+    nnoremap g* g*zz
+    nnoremap g# g#zz
+
+    " Turn off search highlight.
+    nnoremap <silent> <leader><CR> :noh<CR>
+  " }
+
+  " Text manipulation {
+    " Move current line up or down in normal mode.
+    nnoremap [w :m .-2<CR>==
+    nnoremap ]w :m .+1<CR>==
+
+    " Move selected lines up or down in visual mode.
+    vnoremap [w :m '<-2<CR>gv=gv
+    vnoremap ]w :m '>+1<CR>gv=gv
+  " }
 
   " Autocomplete
   inoremap <C-f> <C-X><C-N>
@@ -311,6 +329,21 @@ let mapleader = ';'
 " +----------------------------------------------------------------------------+
 
 colorscheme sierra
+
+" Status line {
+  set laststatus=2                " always show the status line
+
+  set statusline=
+  set statusline+=%#visual#
+  set statusline+=\ %f\           " show filepath
+  set statusline+=%*
+  set statusline+=%m              " modified flag
+  set statusline+=%r              " readonly flag
+  set statusline+=%=
+  set statusline+=%#todo#
+  set statusline+=%{&spell?'\ [S]\ ':''}
+  set statusline+=%*
+" }
 
 " GUI {
   if has('gui_running')
