@@ -328,8 +328,6 @@ let mapleader = ';'
 " |                              APPEARANCE                                    |
 " +----------------------------------------------------------------------------+
 
-colorscheme sierra
-
 " Status line {
   set laststatus=2                " always show the status line
 
