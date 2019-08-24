@@ -148,9 +148,9 @@ set smartcase                       " search matches are case sensitive if any u
 " Indentation
 set autoindent                      " enable automatic indention
 set expandtab                       " replace a tab with spaces
-set tabstop=4                       " a tab is two spaces
-set softtabstop=4                   " untab with two spaces
-set shiftwidth=4                    " autoindent with two spaces
+set tabstop=2                       " a tab is two spaces
+set softtabstop=2                   " untab with two spaces
+set shiftwidth=2                    " autoindent with two spaces
 
 " Code folding
 set foldenable                      " enable code folding
