@@ -302,15 +302,20 @@ let mapleader = ';'
 
 " Plugins {
   " PLUGIN_FZF_VIM {
-    nnoremap <Bslash>r :Rg<CR>
+    " Search through the lines of the currently open buffers.
+    nnoremap <Bslash><Bslash> :Lines<CR>
+
+    " Search through the path with the word under the cursor.
+    nnoremap <Bslash>r :Rg <C-R>=expand("<cword>")<CR><CR>
+
+    " Search through the path for a specfic file.
     nnoremap <Bslash>f :Files<CR>
+
     nnoremap <Bslash>b :Buffers<CR>
-    nnoremap <Bslash>l :Lines<CR>
-    nnoremap <Bslash>m :Marks<CR>
-    nnoremap <Bslash>s :Snippets<CR>
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
+
   " }
 
   " PLUGIN_ULTISNIPS {
