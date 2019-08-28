@@ -36,7 +36,7 @@
 " +----------------------------------------------------------------------------+
 
 " Note: Curl is required to download the plugin manager.
-" Note: Fzf is required to use the fzf plugins.
+" Note: Fzf and ripgrep is required to use the fzf plugins.
 " Note: The fzf plugin is already included in the fzf installation and referred
 "       from the home directory.
 " Note: The fzf vim plugin is dependent on the fzf plugin.
@@ -119,17 +119,11 @@ set clipboard=unnamed               " set unnamed register to system clipboard
 set complete+=k                     " enable dictionary completion
 
 " Sessions
-set sessionoptions=buffers          " only save the buffers of a session.
+set sessionoptions=buffers          " only save the buffers of a session
 
 " +----------------------------------------------------------------------------+
 " |                                EDITOR                                      |
 " +----------------------------------------------------------------------------+
-
-" Formatting
-set list                            " show whitespace characters
-set listchars-=eol:$                " don't show end of line character
-set listchars+=tab:>-               " show tabs and preserve their alignment
-set listchars+=trail:-              " show trailing whitespace
 
 " Line numbers
 set relativenumber                  " show relative line numbers
@@ -152,9 +146,15 @@ set tabstop=2                       " a tab is two spaces
 set softtabstop=2                   " untab with two spaces
 set shiftwidth=2                    " autoindent with two spaces
 
+" Whitespace
+set list                            " show whitespace characters
+set listchars-=eol:$                " don't show the end of line character
+set listchars+=tab:>-               " show tabs and preserve their alignment
+set listchars+=trail:-              " show trailing whitespace
+
 " Code folding
 set foldenable                      " enable code folding
-set foldmethod=indent               " fold with indentation
+set foldmethod=indent               " fold by indentation
 
 " +----------------------------------------------------------------------------+
 " |                                PLUGINS                                     |
@@ -266,7 +266,7 @@ let mapleader = ';'
 
 " Editor {
   " Spellchecker {
-      " Toggle spellchecker
+      " Toggle spellchecker.
       nnoremap <leader>p :setlocal spell!<CR>
 
       " Quickly fix a misspelled word.
