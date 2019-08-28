@@ -306,10 +306,13 @@ let mapleader = ';'
     nnoremap <Bslash><Bslash> :Lines<CR>
 
     " Search through the path with the word under the cursor.
-    nnoremap <Bslash>r :Rg <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <Bslash>w :Rg <C-R>=expand("<cword>")<CR><CR>
 
     " Search through the path for a specfic file.
     nnoremap <Bslash>f :Files<CR>
+
+    " Search through the path for a specific line of text.
+    nnoremap <Bslash>r :Rg<CR>
 
     nnoremap <Bslash>b :Buffers<CR>
     nnoremap <Bslash>h :History<CR>
