@@ -248,12 +248,12 @@ let mapleader = ';'
   nnoremap ]b :bnext<CR>
 
   " Jumplist
-  nnoremap [j <C-O>
-  nnoremap ]j <C-I>
+  nnoremap [j <C-O>zz
+  nnoremap ]j <C-I>zz
 
   " Changelist
-  nnoremap [c g;
-  nnoremap ]c g,
+  nnoremap [c g;zz
+  nnoremap ]c g,zz
 " }
 
 " Sessions {
