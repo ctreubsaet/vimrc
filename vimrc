@@ -148,7 +148,7 @@ set shiftwidth=2                    " autoindent with two spaces
 
 " Whitespace
 set list                            " show whitespace characters
-set listchars-=eol:$                " don't show the end of line character
+set listchars-=eol:$                " don't show newline character
 set listchars+=tab:>-               " show tabs and preserve their alignment
 set listchars+=trail:-              " show trailing whitespace
 
