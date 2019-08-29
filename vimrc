@@ -81,7 +81,7 @@ for directory in directories
 endfor
 
 " Download and install the plugin manager and the plugins.
-if !(filereadable(PLUGIN_MANAGER_FILE))
+if !(filereadable(PLUGIN_MANAGER_FILE)) && executable('curl')
   execute printf('!curl -fLo %s %s', PLUGIN_MANAGER_FILE, PLUGIN_MANAGER_URL)
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -161,14 +161,20 @@ set foldmethod=indent               " fold by indentation
 " +----------------------------------------------------------------------------+
 
 call plug#begin(DIRECTORY_PLUGINS)
-  " fzf is a command-line fuzzy finder with a plugin to integrate with Vim.
-  Plug PLUGIN_FZF
-  " fzf vim is a bundle of fzf-based commands and mappings.
-  Plug PLUGIN_FZF_VIM
-  " UltiSnips is a framework for code snippets.
-  Plug PLUGIN_ULTISNIPS
-  " vim-snippets is a community-maintained repository of common code snippets.
-  Plug PLUGIN_SNIPPETS
+  if executable('fzf') && executable('rg')
+    " fzf is a command-line fuzzy finder with a plugin to integrate with Vim.
+    Plug PLUGIN_FZF
+    " fzf vim is a bundle of fzf-based commands and mappings.
+    Plug PLUGIN_FZF_VIM
+  endif
+
+  if has('python3')
+    " UltiSnips is a framework for code snippets.
+    Plug PLUGIN_ULTISNIPS
+    " vim-snippets is a community-maintained repository of common code snippets.
+    Plug PLUGIN_SNIPPETS
+  endif
+
   " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
