@@ -36,7 +36,7 @@
 " |                              REQUIREMENTS                                  |
 " +----------------------------------------------------------------------------+
 
-function s:showMissingRequirements()
+function! s:showMissingRequirements()
   let MISSING = []
 
   if !(executable('curl'))
