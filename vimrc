@@ -30,6 +30,7 @@
 "   -> FILETYPES
 "   -> SHORTCUTS
 "   -> APPEARANCE
+"   -> VIMLOCAL
 
 " +----------------------------------------------------------------------------+
 " |                              REQUIREMENTS                                  |
@@ -66,6 +67,8 @@ let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
 let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
+
+let VIMLOCAL = $HOME . '/' . '.vimlocal'
 
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
@@ -370,3 +373,12 @@ let mapleader = ';'
 " }
 
 set shortmess+=I                    " hide the launch screen
+
+" +----------------------------------------------------------------------------+
+" +                                VIMLOCAL                                    +
+" +----------------------------------------------------------------------------+
+
+" Load the user-defined vim configuration.
+if filereadable(VIMLOCAL)
+  execute 'source ' . VIMLOCAL
+endif
