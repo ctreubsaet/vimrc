@@ -36,15 +36,31 @@
 " |                              REQUIREMENTS                                  |
 " +----------------------------------------------------------------------------+
 
-" Note: Curl is required to download the plugin manager.
-" Note: Fzf and ripgrep is required to use the fzf plugins.
-" Note: The fzf plugin is already included in the fzf installation and referred
-"       from the home directory.
-" Note: The fzf vim plugin is dependent on the fzf plugin.
-" Note: The UltiSnips plugin requires Python 3.x.
-" Note: The UltiSnips plugin requires the absolute path to the personal snippet directory.
-" Note: The UltiSnips plugin has reserved the directory name 'snippets' for its own usage,
-"       so I named the personal snippet directory to 'snippers'.
+function s:showMissingRequirements()
+  let MISSING = []
+
+  if !(executable('curl'))
+    call add(MISSING, 'No automatic plugin installation.')
+  endif
+
+  if !(executable('fzf'))
+    call add(MISSING, 'No fzf commands.')
+  endif
+
+  if !(executable('rg'))
+    call add(MISSING, 'No ripgrep commands.')
+  endif
+
+  if !(has('python3'))
+    call add(MISSING, 'No UltiSnips functionality.')
+  endif
+
+  if len(MISSING)
+    echo MISSING
+  endif
+endfunction
+
+autocmd VimEnter * call s:showMissingRequirements()
 
 " +----------------------------------------------------------------------------+
 " |                               VARIABLES                                    |
@@ -169,6 +185,10 @@ call plug#begin(DIRECTORY_PLUGINS)
     Plug PLUGIN_FZF
     " fzf vim is a bundle of fzf-based commands and mappings.
     Plug PLUGIN_FZF_VIM
+
+    " Note: The fzf plugin is already included in the fzf installation and referred
+    "       from the home directory.
+    " Note: The fzf vim plugin is dependent on the fzf plugin.
   endif
 
   if has('python3')
@@ -176,6 +196,10 @@ call plug#begin(DIRECTORY_PLUGINS)
     Plug PLUGIN_ULTISNIPS
     " vim-snippets is a community-maintained repository of common code snippets.
     Plug PLUGIN_SNIPPETS
+
+    " Note: The UltiSnips plugin requires the absolute path to the personal snippet directory.
+    " Note: The UltiSnips plugin has reserved the directory name 'snippets' for its own usage,
+    "       so I named the personal snippet directory to 'snippers'.
   endif
 
   " Goyo and Limelight create a distraction-free environment for writing text.
