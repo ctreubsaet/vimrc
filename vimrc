@@ -230,7 +230,7 @@ autocmd FileType * call s:loadLocalConfiguration(s:getConfiguration())
 " |                               SHORTCUTS                                    |
 " +----------------------------------------------------------------------------+
 
-let mapleader = ';'
+let mapleader = ' '
 
 " Files {
   " Open the vimrc file.
