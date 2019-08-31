@@ -167,7 +167,7 @@ set shiftwidth=2                    " autoindent with two spaces
 
 " Whitespace
 set list                            " show whitespace characters
-set listchars-=eol:$                " don't show newline character
+set listchars-=eol:$                " don't show the newline character
 set listchars+=tab:>-               " show tabs and preserve their alignment
 set listchars+=trail:-              " show trailing whitespace
 
@@ -188,7 +188,7 @@ call plug#begin(DIRECTORY_PLUGINS)
 
     " Note: The fzf plugin is already included in the fzf installation and referred
     "       from the home directory.
-    " Note: The fzf vim plugin is dependent on the fzf plugin.
+    " Note: The fzf vim plugin depends on the fzf plugin.
   endif
 
   if has('python3')
