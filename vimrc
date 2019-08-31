@@ -21,7 +21,7 @@
 "     * uses Goyo and Limelight to toggle a distraction-free environment.
 "
 " Sections:
-"   -> DEPENDENCIES
+"   -> REQUIREMENTS
 "   -> VARIABLES
 "   -> INSTALLATION
 "   -> SETTINGS
@@ -32,7 +32,7 @@
 "   -> APPEARANCE
 
 " +----------------------------------------------------------------------------+
-" |                              DEPENDENCIES                                  |
+" |                              REQUIREMENTS                                  |
 " +----------------------------------------------------------------------------+
 
 " Note: Curl is required to download the plugin manager.
