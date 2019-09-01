@@ -140,6 +140,9 @@ set complete+=k                     " enable dictionary completion
 " Sessions
 set sessionoptions=buffers          " only save the buffers of a session
 
+" Macros
+set lazyredraw                      " don't redraw while executing macro
+
 " +----------------------------------------------------------------------------+
 " |                                EDITOR                                      |
 " +----------------------------------------------------------------------------+
@@ -297,6 +300,10 @@ let mapleader = ' '
   nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS . '/'<CR>
 " }
 
+" Macros {
+  nnoremap Q @@
+" }
+
 " Editor {
   " Spellchecker {
       " Toggle spellchecker.
@@ -351,7 +358,6 @@ let mapleader = ' '
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
-
   " }
 
   " PLUGIN_ULTISNIPS {
