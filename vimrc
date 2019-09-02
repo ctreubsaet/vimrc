@@ -84,7 +84,7 @@ let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 
-let VIMLOCAL = $HOME . '/' . '.vimlocal'
+let VIMLOCAL = $HOME . '/' . '.local.vim'
 
 " +----------------------------------------------------------------------------+
 " |                              INSTALLATION                                  |
