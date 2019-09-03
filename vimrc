@@ -242,6 +242,28 @@ call plug#end()
 " |                               FILETYPES                                    |
 " +----------------------------------------------------------------------------+
 
+function! s:python_settings()
+  " Use 4 spaces per indentation level.
+  setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
+  " Highlight the column at 80 characters.
+  setlocal colorcolumn=80
+endfunction
+
+function! s:text_settings()
+  " Enable spell checker.
+  setlocal spell
+
+  " Don't show current mode and command.
+  setlocal noshowmode noshowcmd
+
+  " Don't show line numbers.
+  setlocal norelativenumber nonumber
+endfunction
+
+autocmd! Filetype python call s:python_settings()
+autocmd! Filetype text call s:text_settings()
+
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
 " +----------------------------------------------------------------------------+
