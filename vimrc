@@ -257,6 +257,9 @@ function! s:text_settings()
   " Don't show current mode and command.
   setlocal noshowmode noshowcmd
 
+  " Break a line at a whole word and not at a character.
+  setlocal linebreak
+
   " Don't show line numbers.
   setlocal norelativenumber nonumber
 endfunction
