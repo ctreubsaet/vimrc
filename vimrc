@@ -234,6 +234,12 @@ call plug#end()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }
 
+" PLUGIN_LIMELIGHT {
+  " Set colors if colorscheme is unsupported.
+  let g:limelight_conceal_ctermfg = 'gray'
+  let g:limelight_conceal_ctermfg = 240
+" }
+
 " +----------------------------------------------------------------------------+
 " |                               FILETYPES                                    |
 " +----------------------------------------------------------------------------+
