@@ -15,7 +15,6 @@
 "
 "   The vimrc contains the following features:
 "     * automatically installs plug.vim and plugins.
-"     * loads a separate configuration for each filetype.
 "     * uses FZF for easier handling of files and buffers.
 "     * uses UltiSnips for code snippets.
 "     * uses Goyo and Limelight to toggle a distraction-free environment.
@@ -69,7 +68,6 @@ autocmd VimEnter * call s:showMissingRequirements()
 let DIRECTORY_VIM = $HOME . '/' . '.vim'
 let DIRECTORY_AUTOLOAD = DIRECTORY_VIM . '/' . 'autoload'
 let DIRECTORY_PLUGINS = DIRECTORY_VIM . '/' . 'plugged'
-let DIRECTORY_FILETYPES = DIRECTORY_VIM . '/' . 'filetypes'
 let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
@@ -244,21 +242,6 @@ call plug#end()
 " |                               FILETYPES                                    |
 " +----------------------------------------------------------------------------+
 
-" Get the configuration of the current filetype.
-function! s:getConfiguration()
-  return g:DIRECTORY_FILETYPES . '/' . &filetype . '.vim'
-endfunction
-
-" Check and apply the configuration for the current filetype.
-function! s:loadLocalConfiguration(configuration)
-  if filereadable(a:configuration)
-    execute 'source ' . a:configuration
-  endif
-endfunction
-
-" When opening a file, load the configuration of its file type.
-autocmd FileType * call s:loadLocalConfiguration(s:getConfiguration())
-"
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
 " +----------------------------------------------------------------------------+
