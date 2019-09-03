@@ -259,15 +259,12 @@ autocmd FileType * call s:loadLocalConfiguration(s:getConfiguration())
 
 let mapleader = ' '
 
-" Files {
+" Vim {
   " Open the vimrc file.
-  nnoremap <leader>fv :e $MYVIMRC<CR>
+  nnoremap <leader>vv :e $MYVIMRC<CR>
 
   " Reload the vimrc file.
-  nnoremap <leader>fr :source $MYVIMRC<CR>
-
-  " Open the configuration of the current filetype.
-  autocmd BufEnter * execute 'nnoremap <leader>ff :vsplit ' . s:getConfiguration() . '<CR>'
+  nnoremap <leader>vr :source $MYVIMRC<CR>
 " }
 
 " Windows {
