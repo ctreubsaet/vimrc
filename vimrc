@@ -141,6 +141,10 @@ set sessionoptions=buffers          " only save the buffers of a session
 " Macros
 set lazyredraw                      " don't redraw while executing macro
 
+" Statusline
+set noshowmode                      " hide the current mode
+set noshowcmd                       " hide the last command
+
 " +----------------------------------------------------------------------------+
 " |                                EDITOR                                      |
 " +----------------------------------------------------------------------------+
@@ -254,9 +258,6 @@ function! s:text_settings()
   " Enable spell checker.
   setlocal spell
 
-  " Don't show current mode and command.
-  setlocal noshowmode noshowcmd
-
   " Break a line at a whole word and not at a character.
   setlocal linebreak
 
@@ -266,6 +267,7 @@ endfunction
 
 autocmd! Filetype python call s:python_settings()
 autocmd! Filetype text call s:text_settings()
+autocmd! Filetype markdown call s:text_settings()
 
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
@@ -386,19 +388,12 @@ let mapleader = ' '
 " |                              APPEARANCE                                    |
 " +----------------------------------------------------------------------------+
 
-" Status line {
-  set laststatus=2                " always show the status line
+" Statusline {
+  set laststatus=2                  " always show the statusline
 
-  set statusline=
-  set statusline+=%#visual#
-  set statusline+=\ %f\           " show filepath
-  set statusline+=%*
-  set statusline+=%m              " modified flag
-  set statusline+=%r              " readonly flag
-  set statusline+=%=
-  set statusline+=%#todo#
-  set statusline+=%{&spell?'\ [S]\ ':''}
-  set statusline+=%*
+  set statusline+=\ %f              " show current filename
+  set statusline+=\ %m              " show modified flag
+  set statusline+=\ %r              " show readonly flag
 " }
 
 " GUI {
@@ -413,6 +408,7 @@ let mapleader = ' '
   endif
 " }
 
+set shortmess+=F                    " hide file info while editing file
 set shortmess+=I                    " hide the launch screen
 
 " +----------------------------------------------------------------------------+
