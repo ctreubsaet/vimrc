@@ -2,3 +2,4 @@ autoload/*
 colors/*
 plugged/*
 sessions/*
+snippers/*
