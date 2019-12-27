@@ -284,11 +284,23 @@ let mapleader = ' '
 " }
 
 " Windows {
-  " Split panel navigation
+  " Navigate splits
+  nnoremap <C-H> <C-W><C-H>
   nnoremap <C-J> <C-W><C-J>
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
-  nnoremap <C-H> <C-W><C-H>
+
+  " Arrange splits
+  nnoremap <S-H> <C-W><S-H>
+  nnoremap <S-J> <C-W><S-J>
+  nnoremap <S-K> <C-W><S-K>
+  nnoremap <S-L> <C-W><S-L>
+
+  " Open splits
+  nnoremap <leader><S-H> :leftabove vnew<CR>
+  nnoremap <leader><S-J> :rightbelow new<CR>
+  nnoremap <leader><S-K> :leftabove new<CR>
+  nnoremap <leader><S-L> :rightbelow vnew<CR>
 " }
 
 " Buffers {
