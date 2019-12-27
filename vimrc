@@ -26,7 +26,6 @@
 "   -> SETTINGS
 "   -> EDITOR
 "   -> PLUGINS
-"   -> FILETYPES
 "   -> SHORTCUTS
 "   -> APPEARANCE
 "   -> VIMLOCAL
@@ -241,33 +240,6 @@ call plug#end()
   let g:limelight_conceal_ctermfg = 'gray'
   let g:limelight_conceal_ctermfg = 240
 " }
-
-" +----------------------------------------------------------------------------+
-" |                               FILETYPES                                    |
-" +----------------------------------------------------------------------------+
-
-function! s:python_settings()
-  " Use 4 spaces per indentation level.
-  setlocal tabstop=4 softtabstop=4 shiftwidth=4
-
-  " Highlight the column at 80 characters.
-  setlocal colorcolumn=80
-endfunction
-
-function! s:text_settings()
-  " Enable spell checker.
-  setlocal spell
-
-  " Break a line at a whole word and not at a character.
-  setlocal linebreak
-
-  " Don't show line numbers.
-  setlocal norelativenumber nonumber
-endfunction
-
-autocmd! Filetype python call s:python_settings()
-autocmd! Filetype text call s:text_settings()
-autocmd! Filetype markdown call s:text_settings()
 
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
