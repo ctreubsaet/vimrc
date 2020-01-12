@@ -263,10 +263,10 @@ let mapleader = ' '
   nnoremap <C-L> <C-W><C-L>
 
   " Arrange splits
-  nnoremap <S-H> <C-W><S-H>
-  nnoremap <S-J> <C-W><S-J>
-  nnoremap <S-K> <C-W><S-K>
-  nnoremap <S-L> <C-W><S-L>
+  nnoremap <leader><C-H> <C-W><S-H>
+  nnoremap <leader><C-J> <C-W><S-J>
+  nnoremap <leader><C-K> <C-W><S-K>
+  nnoremap <leader><C-L> <C-W><S-L>
 
   " Open splits
   nnoremap <leader><S-H> :leftabove vnew<CR>
