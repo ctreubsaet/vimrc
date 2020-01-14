@@ -15,6 +15,7 @@
 "   This vimrc is primarily built for writing plain text and light scripting.
 "
 "   The vimrc contains the following features:
+"     * check if the necessary packages are installed.
 "     * automatically installs plug.vim and plugins.
 "     * uses FZF for easier handling of files and buffers.
 "     * uses UltiSnips for code snippets.
@@ -35,7 +36,7 @@
 " |                              REQUIREMENTS                                  |
 " +----------------------------------------------------------------------------+
 
-function! s:showMissingRequirements()
+function! s:showMissingPackages()
   let MISSING = []
 
   if !(executable('curl'))
@@ -59,7 +60,7 @@ function! s:showMissingRequirements()
   endif
 endfunction
 
-autocmd VimEnter * call s:showMissingRequirements()
+autocmd VimEnter * call s:showMissingPackages()
 
 " +----------------------------------------------------------------------------+
 " |                               VARIABLES                                    |
