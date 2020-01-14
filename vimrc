@@ -36,6 +36,12 @@
 " |                              REQUIREMENTS                                  |
 " +----------------------------------------------------------------------------+
 
+function! s:checkRequiredVersion()
+  if version < 800
+    echo 'The required version is 800 or higher.'
+  endif
+endfunction
+
 function! s:showMissingPackages()
   let MISSING = []
 
@@ -61,6 +67,7 @@ function! s:showMissingPackages()
 endfunction
 
 autocmd VimEnter * call s:showMissingPackages()
+autocmd VimEnter * call s:checkRequiredVersion()
 
 " +----------------------------------------------------------------------------+
 " |                               VARIABLES                                    |
