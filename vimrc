@@ -360,6 +360,9 @@ let mapleader = ' '
     " Search through the path for a specific line of text.
     nnoremap <Bslash>r :Rg<CR>
 
+    " Gather all the to-dos within the path in the quickfix window.
+    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
+
     nnoremap <Bslash>b :Buffers<CR>
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
