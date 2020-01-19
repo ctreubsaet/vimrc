@@ -298,19 +298,13 @@ let mapleader = ' '
   nnoremap ]c g,zz
 " }
 
-" Sessions {
-  " Look up and load a previously saved session.
-  nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS . '/*'<CR>
-
-  " Save a session.
-  nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS . '/'<CR>
-" }
-
-" Macros {
-  nnoremap Q @@
-" }
-
 " Editor {
+  " Autocomplete
+  inoremap ;; <C-X><C-N>
+
+  " Macros
+  nnoremap Q @@
+
   " Spellchecker {
       " Toggle spellchecker.
       nnoremap <leader>p :setlocal spell!<CR>
@@ -340,10 +334,28 @@ let mapleader = ' '
     " Move selected lines up or down in visual mode.
     vnoremap [w :m '<-2<CR>gv=gv
     vnoremap ]w :m '>+1<CR>gv=gv
-  " }
+" }
 
-  " Autocomplete
-  inoremap <C-f> <C-X><C-N>
+" Sessions {
+  " Look up and load a previously saved session.
+  nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS . '/*'<CR>
+
+  " Save a session.
+  nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS . '/'<CR>
+" }
+
+" Path {
+  " Set the working directory to the one of the current file.
+  nnoremap ,s :cd %:p:h<CR>:pwd<CR>
+
+  " Copy the absolute path of the current file to the clipboard.
+  nnoremap ,a :let @+=expand('%:p')<CR>
+
+  " Copy the directory path of the current file to the clipboard.
+  nnoremap ,d :let @+=expand('%:p:h')<CR>
+
+  " Copy the name of the current file to the clipboard.
+  nnoremap ,f :let @+=expand('%:t')<CR>
 " }
 
 " Plugins {
