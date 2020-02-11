@@ -278,10 +278,10 @@ let mapleader = ' '
   nnoremap <leader><C-L> <C-W><S-L>
 
   " Open splits
-  nnoremap <leader><S-H> :leftabove vnew<CR>
-  nnoremap <leader><S-J> :rightbelow new<CR>
-  nnoremap <leader><S-K> :leftabove new<CR>
-  nnoremap <leader><S-L> :rightbelow vnew<CR>
+  nnoremap <leader><S-H> :leftabove vsplit<CR>
+  nnoremap <leader><S-J> :rightbelow split<CR>
+  nnoremap <leader><S-K> :leftabove split<CR>
+  nnoremap <leader><S-L> :rightbelow vsplit<CR>
 " }
 
 " Buffers {
