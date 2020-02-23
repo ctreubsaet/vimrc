@@ -18,7 +18,6 @@
 "     * check if the necessary packages are installed.
 "     * automatically installs plug.vim and plugins.
 "     * uses FZF for easier handling of files and buffers.
-"     * uses UltiSnips for code snippets.
 "     * uses Goyo and Limelight to toggle a distraction-free environment.
 "
 " Sections:
@@ -57,10 +56,6 @@ function! s:showMissingPackages()
     call add(MISSING, 'No ripgrep commands.')
   endif
 
-  if !(has('python3'))
-    call add(MISSING, 'No UltiSnips functionality.')
-  endif
-
   if len(MISSING)
     echo MISSING
   endif
@@ -76,7 +71,6 @@ autocmd VimEnter * call s:checkRequiredVersion()
 let DIRECTORY_VIM = $HOME . '/' . '.vim'
 let DIRECTORY_AUTOLOAD = DIRECTORY_VIM . '/' . 'autoload'
 let DIRECTORY_PLUGINS = DIRECTORY_VIM . '/' . 'plugged'
-let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 
@@ -85,8 +79,6 @@ let PLUGIN_MANAGER_URL = 'https://raw.githubusercontent.com/junegunn/vim-plug/ma
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
-let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
-let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 
@@ -204,31 +196,9 @@ call plug#begin(DIRECTORY_PLUGINS)
     " Note: The fzf vim plugin depends on the fzf plugin.
   endif
 
-  if has('python3')
-    " UltiSnips is a framework for code snippets.
-    Plug PLUGIN_ULTISNIPS
-    " vim-snippets is a community-maintained repository of common code snippets.
-    Plug PLUGIN_SNIPPETS
-
-    " Note: The UltiSnips plugin requires the absolute path to the personal snippet directory.
-    " Note: The UltiSnips plugin has reserved the directory name 'snippets' for its own usage,
-    "       so I named the personal snippet directory to 'snippers'.
-  endif
-
   " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
-
-" PLUGIN_ULTISNIPS | PLUGIN_SNIPPETS {
-  " Add the personal snippet directory.
-  let g:UltiSnipsSnippetDir = DIRECTORY_SNIPPETS
-
-  " Put priority of the personal snippets before those in PLUGIN_SNIPPETS.
-  let g:UltiSnipsSnippetDirectories = [DIRECTORY_SNIPPETS, "UltiSnips"]
-
-  " Open the UltiSnipsEdit in a vertical buffer.
-  let g:UltiSnipsEditSplit = "vertical"
-" }
 
 " PLUGIN_GOYO {
   " Toggle PLUGIN_LIMELIGHT together with PLUGIN_GOYO.
@@ -244,24 +214,16 @@ call plug#end()
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }
 
-" PLUGIN_LIMELIGHT {
-  " Set colors if colorscheme is unsupported.
-  let g:limelight_conceal_ctermfg = 'gray'
-  let g:limelight_conceal_ctermfg = 240
-" }
-
 " +----------------------------------------------------------------------------+
 " |                               SHORTCUTS                                    |
 " +----------------------------------------------------------------------------+
 
-let mapleader = ' '
-
 " Vim {
   " Open the vimrc file.
-  nnoremap <leader>vv :e $MYVIMRC<CR>
+  nnoremap <space>vv :e $MYVIMRC<CR>
 
   " Reload the vimrc file.
-  nnoremap <leader>vr :source $MYVIMRC<CR>
+  nnoremap <space>vr :source $MYVIMRC<CR>
 " }
 
 " Windows {
@@ -272,30 +234,40 @@ let mapleader = ' '
   nnoremap <C-L> <C-W><C-L>
 
   " Arrange splits
-  nnoremap <leader><C-H> <C-W><S-H>
-  nnoremap <leader><C-J> <C-W><S-J>
-  nnoremap <leader><C-K> <C-W><S-K>
-  nnoremap <leader><C-L> <C-W><S-L>
+  nnoremap <space><C-H> <C-W><S-H>
+  nnoremap <space><C-J> <C-W><S-J>
+  nnoremap <space><C-K> <C-W><S-K>
+  nnoremap <space><C-L> <C-W><S-L>
 
   " Open splits
-  nnoremap <leader><S-H> :leftabove vsplit<CR>
-  nnoremap <leader><S-J> :rightbelow split<CR>
-  nnoremap <leader><S-K> :leftabove split<CR>
-  nnoremap <leader><S-L> :rightbelow vsplit<CR>
+  nnoremap <space><S-H> :leftabove vsplit<CR>:Buffers<CR>
+  nnoremap <space><S-J> :rightbelow split<CR>:Buffers<CR>
+  nnoremap <space><S-K> :leftabove split<CR>:Buffers<CR>
+  nnoremap <space><S-L> :rightbelow vsplit<CR>:Buffers<CR>
 " }
 
-" Buffers {
-  " Navigate buffers
+" Lists {
+  " Buffers
   nnoremap [b :bprevious<CR>
   nnoremap ]b :bnext<CR>
 
-  " Jumplist
+  " Jumps
   nnoremap [j <C-O>zz
   nnoremap ]j <C-I>zz
 
-  " Changelist
+  " Changes
   nnoremap [c g;zz
   nnoremap ]c g,zz
+
+  " Quickfix {
+    " Gather all the to-dos within the path in the quickfix window.
+    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
+  " }
+
+  " Location {
+    " Note: Set the makepgr command locally in the filetype plugin.
+    nnoremap <Bslash>l :lmake<CR>:lopen<CR>
+  " }
 " }
 
 " Editor {
@@ -307,10 +279,10 @@ let mapleader = ' '
 
   " Spellchecker {
       " Toggle spellchecker.
-      nnoremap <leader>p :setlocal spell!<CR>
+      nnoremap <space>p :setlocal spell!<CR>
 
       " Quickly fix a misspelled word.
-      nnoremap <leader>z z=1<CR><CR>
+      nnoremap <space>z z=1<CR><CR>
   " }
 
   " Searching {
@@ -323,39 +295,36 @@ let mapleader = ' '
     nnoremap g# g#zz
 
     " Turn off search highlight.
-    nnoremap <silent> <leader><CR> :noh<CR>
+    nnoremap <silent> <space><CR> :noh<CR>
   " }
-
-  " Text manipulation {
-    " Move current line up or down in normal mode.
-    nnoremap [w :m .-2<CR>==
-    nnoremap ]w :m .+1<CR>==
-
-    " Move selected lines up or down in visual mode.
-    vnoremap [w :m '<-2<CR>gv=gv
-    vnoremap ]w :m '>+1<CR>gv=gv
 " }
 
 " Sessions {
   " Look up and load a previously saved session.
-  nnoremap <leader>sl :source <C-R>=DIRECTORY_SESSIONS . '/*'<CR>
+  nnoremap <space>sl :source <C-R>=DIRECTORY_SESSIONS . '/*'<CR>
 
   " Save a session.
-  nnoremap <leader>ss :mksession! <C-R>=DIRECTORY_SESSIONS . '/'<CR>
+  nnoremap <space>ss :mksession! <C-R>=DIRECTORY_SESSIONS . '/'<CR>
 " }
 
 " Path {
   " Set the working directory to the one of the current file.
-  nnoremap ,s :cd %:p:h<CR>:pwd<CR>
+  nnoremap ./ :cd %:p:h<CR>:pwd<CR>
+
+  " Move the path up to its parent directory.
+  nnoremap ../ :cd ..<CR>:pwd<CR>
+  "
+  " Move the path up to its parent directory.
+  nnoremap .../ :cd ../..<CR>:pwd<CR>
 
   " Copy the absolute path of the current file to the clipboard.
-  nnoremap ,a :let @+=expand('%:p')<CR>
+  nnoremap .a :let @+=expand('%:p')<CR>
 
   " Copy the directory path of the current file to the clipboard.
-  nnoremap ,d :let @+=expand('%:p:h')<CR>
+  nnoremap .d :let @+=expand('%:p:h')<CR>
 
   " Copy the name of the current file to the clipboard.
-  nnoremap ,f :let @+=expand('%:t')<CR>
+  nnoremap .f :let @+=expand('%:t')<CR>
 " }
 
 " Plugins {
@@ -372,23 +341,14 @@ let mapleader = ' '
     " Search through the path for a specific line of text.
     nnoremap <Bslash>r :Rg<CR>
 
-    " Gather all the to-dos within the path in the quickfix window.
-    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
-
     nnoremap <Bslash>b :Buffers<CR>
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
   " }
 
-  " PLUGIN_ULTISNIPS {
-    let g:UltiSnipsExpandTrigger = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger = '<tab>'
-    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-  " }
-
   " PLUGIN_GOYO {
-    nnoremap <leader>g :Goyo<CR>
+    nnoremap <space>g :Goyo<CR>
   " }
 " }
 
