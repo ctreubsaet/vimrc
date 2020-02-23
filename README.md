@@ -4,5 +4,4 @@ The vimrc contains the following features:
   * check if the necessary packages are installed.
   * automatically installs plug.vim and plugins.
   * uses FZF for easier handling of files and buffers.
-  * uses UltiSnips for code snippets.
   * uses Goyo and Limelight to toggle a distraction-free environment.
