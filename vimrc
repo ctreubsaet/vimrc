@@ -311,10 +311,10 @@ call plug#end()
   " Set the working directory to the one of the current file.
   nnoremap ./ :cd %:p:h<CR>:pwd<CR>
 
-  " Move the path up to its parent directory.
+  " Set the working directory to its parent directory.
   nnoremap ../ :cd ..<CR>:pwd<CR>
-  "
-  " Move the path up to its parent directory.
+
+  " Set the working directory to its grandparent directory.
   nnoremap .../ :cd ../..<CR>:pwd<CR>
 
   " Copy the absolute path of the current file to the clipboard.
