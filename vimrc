@@ -335,7 +335,7 @@ call plug#end()
     " Search through the path with the word under the cursor.
     nnoremap <Bslash>w :Rg <C-R>=expand("<cword>")<CR><CR>
 
-    " Search through the path for a specfic file.
+    " Search through the path for a specific file.
     nnoremap <Bslash>f :Files<CR>
 
     " Search through the path for a specific line of text.
