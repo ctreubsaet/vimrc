@@ -309,22 +309,22 @@ call plug#end()
 
 " Path {
   " Set the working directory to the one of the current file.
-  nnoremap ./ :cd %:p:h<CR>:pwd<CR>
+  nnoremap ,/ :cd %:p:h<CR>:pwd<CR>
 
   " Set the working directory to its parent directory.
-  nnoremap ../ :cd ..<CR>:pwd<CR>
+  nnoremap ,,/ :cd ..<CR>:pwd<CR>
 
   " Set the working directory to its grandparent directory.
-  nnoremap .../ :cd ../..<CR>:pwd<CR>
+  nnoremap ,,,/ :cd ../..<CR>:pwd<CR>
 
   " Copy the absolute path of the current file to the clipboard.
-  nnoremap .a :let @+=expand('%:p')<CR>
+  nnoremap ,a :let @+=expand('%:p')<CR>
 
   " Copy the directory path of the current file to the clipboard.
-  nnoremap .d :let @+=expand('%:p:h')<CR>
+  nnoremap ,d :let @+=expand('%:p:h')<CR>
 
   " Copy the name of the current file to the clipboard.
-  nnoremap .f :let @+=expand('%:t')<CR>
+  nnoremap ,f :let @+=expand('%:t')<CR>
 " }
 
 " Plugins {
