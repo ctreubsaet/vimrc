@@ -71,6 +71,7 @@ autocmd VimEnter * call s:checkRequiredVersion()
 let DIRECTORY_VIM = $HOME . '/' . '.vim'
 let DIRECTORY_AUTOLOAD = DIRECTORY_VIM . '/' . 'autoload'
 let DIRECTORY_PLUGINS = DIRECTORY_VIM . '/' . 'plugged'
+let DIRECTORY_SNIPPETS = DIRECTORY_VIM . '/' . 'snippers'
 let DIRECTORY_SESSIONS = DIRECTORY_VIM . '/' . 'sessions'
 let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 
@@ -79,6 +80,8 @@ let PLUGIN_MANAGER_URL = 'https://raw.githubusercontent.com/junegunn/vim-plug/ma
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
+let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
+let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
 let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
 
@@ -196,9 +199,32 @@ call plug#begin(DIRECTORY_PLUGINS)
     " Note: The fzf vim plugin depends on the fzf plugin.
   endif
 
-  " Goyo and Limelight create a distraction-free environment for writing text.
+  if has('python3')
+    " UltiSnips is a framework for code snippets.
+    Plug PLUGIN_ULTISNIPS
+    " vim-snippets is a community-maintained repository of common code snippets.
+    Plug PLUGIN_SNIPPETS
+
+    " Note: The UltiSnips plugin requires the absolute path to the
+    "       personal snippet directory
+    " Note: The UltiSnips plugin has reserved the directory name 'snippets'
+    "       for its own usage so I named the personal snippet directory to 'snippers'.
+  endif
+
+" Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
+
+" PLUGIN_ULTISNIPS | PLUGIN_SNIPPETS {
+  " Add the personal snippet directory.
+  let g:UltiSnipsSnippetDir = DIRECTORY_SNIPPETS
+
+  " Put priority of the personal snippets before those in PLUGIN_SNIPPETS.
+  let g:UltiSnipsSnippetDirectories = [DIRECTORY_SNIPPETS, "UltiSnips"]
+
+  " Open the UltiSnipsEdit in a vertical buffer.
+  let g:UltiSnipsEditSplit = "vertical"
+" }
 
 " PLUGIN_GOYO {
   " Toggle PLUGIN_LIMELIGHT together with PLUGIN_GOYO.
@@ -335,6 +361,12 @@ call plug#end()
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
+  " }
+
+  " PLUGIN_ULTISNIPS {
+    let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
   " }
 
   " PLUGIN_GOYO {
