@@ -258,16 +258,6 @@ call plug#end()
   " Changes
   nnoremap [c g;zz
   nnoremap ]c g,zz
-
-  " Quickfix {
-    " Gather all the to-dos within the path in the quickfix window.
-    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
-  " }
-
-  " Location {
-    " Note: Set the makepgr command locally in the filetype plugin.
-    nnoremap <Bslash>l :lmake<CR>:lopen<CR>
-  " }
 " }
 
 " Editor {
