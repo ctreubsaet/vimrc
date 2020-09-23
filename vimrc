@@ -305,6 +305,9 @@ call plug#end()
 " }
 
 " Editor {
+  " Quickly save file.
+  nnoremap <space><space> :w<CR>
+
   " Autocomplete
   inoremap ;; <C-X><C-N>
 
