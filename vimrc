@@ -15,9 +15,11 @@
 "   This vimrc is primarily built for writing plain text and light scripting.
 "
 "   The vimrc contains the following features:
-"     * check if the necessary packages are installed.
-"     * automatically installs plug.vim and plugins.
+"     * checks if the necessary packages are installed.
+"     * automatically installs plug.vim and the plugins.
 "     * uses FZF for easier handling of files and buffers.
+"     * uses ALE for linting and code formatting while you edit your text files.
+"     * uses UltiSnips for snippets management and vim-snippets for community snippets.
 "     * uses Goyo and Limelight to toggle a distraction-free environment.
 "
 " Sections:
@@ -80,6 +82,7 @@ let PLUGIN_MANAGER_URL = 'https://raw.githubusercontent.com/junegunn/vim-plug/ma
 
 let PLUGIN_FZF = $HOME . '/' . '.fzf'
 let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
+let PLUGIN_ALE = 'dense-analysis/ale'
 let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
 let PLUGIN_SNIPPETS = 'honza/vim-snippets'
 let PLUGIN_GOYO = 'junegunn/goyo.vim'
@@ -199,6 +202,14 @@ call plug#begin(DIRECTORY_PLUGINS)
     " Note: The fzf vim plugin depends on the fzf plugin.
   endif
 
+  if version >= 800
+    " ALE provides linting and code formatting while you edit your text files.
+    Plug PLUGIN_ALE
+
+    " Note: The used linters and fixers for each filetype are defined separately
+    "       in a ftplugin file.
+  endif
+
   if has('python3')
     " UltiSnips is a framework for code snippets.
     Plug PLUGIN_ULTISNIPS
@@ -224,6 +235,13 @@ call plug#end()
 
   " Open the UltiSnipsEdit in a vertical buffer.
   let g:UltiSnipsEditSplit = "vertical"
+" }
+
+" PLUGIN_ALE {
+  " Only run the linters when you save a file.
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_insert_leave = 0
 " }
 
 " PLUGIN_GOYO {
@@ -361,6 +379,14 @@ call plug#end()
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
+  " }
+
+  " PLUGIN_ALE {
+    " Apply the code formatter(s) on the buffer.
+    nnoremap <space>a :ALEFix<CR>
+
+    nmap <silent> [a <Plug>(ale_previous_wrap)zz
+    nmap <silent> ]a <Plug>(ale_next_wrap)zz
   " }
 
   " PLUGIN_ULTISNIPS {
