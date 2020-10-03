@@ -278,10 +278,10 @@ call plug#end()
   nnoremap <C-L> <C-W><C-L>
 
   " Open splits
-  nnoremap <space><S-H> :leftabove vsplit<CR>:Buffers<CR>
-  nnoremap <space><S-J> :rightbelow split<CR>:Buffers<CR>
-  nnoremap <space><S-K> :leftabove split<CR>:Buffers<CR>
-  nnoremap <space><S-L> :rightbelow vsplit<CR>:Buffers<CR>
+  nnoremap <space><C-H> :leftabove vsplit<CR>:Buffers<CR>
+  nnoremap <space><C-J> :rightbelow split<CR>:Buffers<CR>
+  nnoremap <space><C-K> :leftabove split<CR>:Buffers<CR>
+  nnoremap <space><C-L> :rightbelow vsplit<CR>:Buffers<CR>
 " }
 
 " Lists {
