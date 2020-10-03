@@ -277,12 +277,6 @@ call plug#end()
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
 
-  " Arrange splits
-  nnoremap <space><C-H> <C-W><S-H>
-  nnoremap <space><C-J> <C-W><S-J>
-  nnoremap <space><C-K> <C-W><S-K>
-  nnoremap <space><C-L> <C-W><S-L>
-
   " Open splits
   nnoremap <space><S-H> :leftabove vsplit<CR>:Buffers<CR>
   nnoremap <space><S-J> :rightbelow split<CR>:Buffers<CR>
