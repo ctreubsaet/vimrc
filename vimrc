@@ -145,7 +145,7 @@ set complete+=k                     " enable dictionary completion
 set sessionoptions=curdir,buffers   " only save the working directory and buffers
 
 " Macros
-set lazyredraw                      " don't redraw while executing macro
+set lazyredraw                      " don't redraw while executing a macro
 
 " Statusline
 set noshowmode                      " hide the current mode
@@ -222,7 +222,7 @@ call plug#begin(DIRECTORY_PLUGINS)
     "       for its own usage so I named the personal snippet directory to 'snippers'.
   endif
 
-" Goyo and Limelight create a distraction-free environment for writing text.
+  " Goyo and Limelight create a distraction-free environment for writing text.
   Plug PLUGIN_GOYO | Plug PLUGIN_LIMELIGHT
 call plug#end()
 
@@ -366,13 +366,19 @@ call plug#end()
     " Search through the path with the word under the cursor.
     nnoremap <Bslash>w :Rg <C-R>=expand("<cword>")<CR><CR>
 
-    " Search through the path for a specific file.
+    " Gather all the to-dos within the path in the quickfix window.
+    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
+
+    " Search through the currently open buffers.
+    nnoremap <Bslash>b :Buffers<CR>
+
+    " Search through the path for a specific file by name.
     nnoremap <Bslash>f :Files<CR>
 
-    " Search through the path for a specific line of text.
+    " Search through the path with a pattern to open a file on a specific line.
     nnoremap <Bslash>r :Rg<CR>
 
-    nnoremap <Bslash>b :Buffers<CR>
+    " Search through the file, command or search history.
     nnoremap <Bslash>h :History<CR>
     nnoremap <Bslash>: :History:<CR>
     nnoremap <Bslash>/ :History/<CR>
