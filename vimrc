@@ -142,7 +142,7 @@ set clipboard=unnamed               " set unnamed register to system clipboard
 set complete+=k                     " enable dictionary completion
 
 " Sessions
-set sessionoptions=buffers          " only save the buffers of a session
+set sessionoptions=curdir,buffers   " only save the working directory and buffers
 
 " Macros
 set lazyredraw                      " don't redraw while executing macro
