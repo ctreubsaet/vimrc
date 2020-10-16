@@ -50,6 +50,10 @@ function! s:showMissingPackages()
     call add(MISSING, 'No automatic plugin installation.')
   endif
 
+  if !(executable('python3'))
+    call add(MISSING, 'No python runtime.')
+  endif
+
   if !(executable('fzf'))
     call add(MISSING, 'No fzf commands.')
   endif
