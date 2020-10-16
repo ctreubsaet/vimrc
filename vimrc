@@ -312,12 +312,15 @@ call plug#end()
   " Macros
   nnoremap Q @@
 
-  " Spellchecker {
-      " Toggle spellchecker.
-      nnoremap <space>p :setlocal spell!<CR>
+  " Plain text {
+    " Quickly fix a misspelled word.
+    nnoremap <space>ww z=1<CR><CR>
 
-      " Quickly fix a misspelled word.
-      nnoremap <space>z z=1<CR><CR>
+    " Toggle the spellchecker.
+    nnoremap <space>ws :setlocal spell!<CR>
+
+    " Show the word count.
+    nnoremap <space>wc g<C-g>
   " }
 
   " Searching {
