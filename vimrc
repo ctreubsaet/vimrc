@@ -23,14 +23,12 @@
 "     * uses Goyo and Limelight to toggle a distraction-free environment.
 "
 " Sections:
-"   -> REQUIREMENTS
 "   -> VARIABLES
 "   -> INSTALLATION
 "   -> SETTINGS
 "   -> EDITOR
-"   -> PLUGINS
 "   -> SHORTCUTS
-"   -> APPEARANCE
+"   -> PLUGINS
 "   -> VIMLOCAL
 
 " +----------------------------------------------------------------------------+
