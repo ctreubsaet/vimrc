@@ -45,13 +45,23 @@ let DIRECTORY_COLORS = DIRECTORY_VIM . '/' . 'colors'
 let PLUGIN_MANAGER_FILE = DIRECTORY_AUTOLOAD . '/' . 'plug.vim'
 let PLUGIN_MANAGER_URL = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-let PLUGIN_FZF = $HOME . '/' . '.fzf'
-let PLUGIN_FZF_VIM = 'junegunn/fzf.vim'
-let PLUGIN_ALE = 'dense-analysis/ale'
-let PLUGIN_ULTISNIPS = 'SirVer/ultisnips'
-let PLUGIN_SNIPPETS = 'honza/vim-snippets'
-let PLUGIN_GOYO = 'junegunn/goyo.vim'
-let PLUGIN_LIMELIGHT = 'junegunn/limelight.vim'
+let PLUGIN_FZF = 'FZF'
+let PLUGIN_FZF_VIM = 'FZF-vim'
+let PLUGIN_ALE = 'ALE'
+let PLUGIN_ULTISNIPS = 'UltiSnips'
+let PLUGIN_SNIPPETS = 'UltiSnips-snippets'
+let PLUGIN_GOYO = 'Goyo'
+let PLUGIN_LIMELIGHT = 'Limelight'
+
+let REPOSITORIES = {
+  \ PLUGIN_FZF : $HOME . '/' . '.fzf',
+  \ PLUGIN_FZF_VIM : 'junegunn/fzf.vim',
+  \ PLUGIN_ALE : 'dense-analysis/ale',
+  \ PLUGIN_ULTISNIPS : 'SirVer/ultisnips',
+  \ PLUGIN_SNIPPETS : 'honza/vim-snippets',
+  \ PLUGIN_GOYO : 'junegunn/goyo.vim',
+  \ PLUGIN_LIMELIGHT : 'junegunn/limelight.vim'
+  \ }
 
 let VIMLOCAL = $HOME . '/' . '.local.vim'
 
