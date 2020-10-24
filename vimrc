@@ -274,31 +274,19 @@ set foldmethod=indent               " fold by indentation
 " }
 
 " +----------------------------------------------------------------------------+
-" |                              APPEARANCE                                    |
+" |                                PLUGINS                                     |
 " +----------------------------------------------------------------------------+
 
-" Statusline {
-  set laststatus=2                  " always show the statusline
+let AVAILABLE_PLUGINS = {}
 
-  set statusline+=\ %f              " show current filename
-  set statusline+=\ %m              " show modified flag
-  set statusline+=\ %r              " show readonly flag
-" }
+call plug#begin(DIRECTORY_PLUGINS)
+  let AVAILABLE_PLUGINS[PLUGIN_FZF] = g:plugin#fzf#load()
+  let AVAILABLE_PLUGINS[PLUGIN_ALE] = g:plugin#ale#load()
+  let AVAILABLE_PLUGINS[PLUGIN_ULTISNIPS] = g:plugin#ultisnips#load()
+  let AVAILABLE_PLUGINS[PLUGIN_GOYO] = g:plugin#goyo#load()
+call plug#end()
 
-" GUI {
-  if has('gui_running')
-  " Minimalize the GUI options.
-    set guioptions-=m               " remove the menu bar
-    set guioptions-=T               " remove the toolbar
-    set guioptions-=L               " remove the left-hand scroll bar
-    set guioptions-=l
-    set guioptions-=R               " remove the right-hand scroll bar
-    set guioptions-=r
-  endif
-" }
-
-set shortmess+=F                    " hide file info while editing file
-set shortmess+=I                    " hide the launch screen
+autocmd VimEnter * call g:logging#checkPlugins(AVAILABLE_PLUGINS)
 
 " +----------------------------------------------------------------------------+
 " +                                VIMLOCAL                                    +
