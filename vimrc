@@ -79,7 +79,11 @@ for directory in directories
 endfor
 
 " Download and install the plugin manager and the plugins.
-if !(filereadable(PLUGIN_MANAGER_FILE)) && executable('curl')
+if !(filereadable(PLUGIN_MANAGER_FILE))
+  if !(executable('curl'))
+    call g:logging#error('The cURL command cannot be found.')
+  endif
+
   execute printf('!curl -fLo %s %s', PLUGIN_MANAGER_FILE, PLUGIN_MANAGER_URL)
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
