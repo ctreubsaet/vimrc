@@ -145,7 +145,7 @@ set ignorecase                      " search matches are case insensitive
 set smartcase                       " search matches are case sensitive if any upper case
 
 " Indentation
-set autoindent                      " enable automatic indention
+set autoindent                      " enable automatic indentation
 set expandtab                       " replace a tab with spaces
 set tabstop=2                       " a tab is two spaces
 set softtabstop=2                   " untab with two spaces
