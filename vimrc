@@ -261,51 +261,6 @@ set foldmethod=indent               " fold by indentation
   nnoremap ,f :let @+=expand('%:t')<CR>
 " }
 
-" Plugins {
-  " PLUGIN_FZF_VIM {
-    " Search through the lines of the currently open buffers.
-    nnoremap <Bslash><Bslash> :Lines<CR>
-
-    " Search through the path with the word under the cursor.
-    nnoremap <Bslash>w :Rg <C-R>=expand("<cword>")<CR><CR>
-
-    " Gather all the to-dos within the path in the quickfix window.
-    nnoremap <Bslash>t :cgetexpr system('rg --vimgrep TODO .')<CR>:copen<CR>
-
-    " Search through the currently open buffers.
-    nnoremap <Bslash>b :Buffers<CR>
-
-    " Search through the path for a specific file by name.
-    nnoremap <Bslash>f :Files<CR>
-
-    " Search through the path with a pattern to open a file on a specific line.
-    nnoremap <Bslash>r :Rg<CR>
-
-    " Search through the file, command or search history.
-    nnoremap <Bslash>h :History<CR>
-    nnoremap <Bslash>: :History:<CR>
-    nnoremap <Bslash>/ :History/<CR>
-  " }
-
-  " PLUGIN_ALE {
-    " Apply the code formatter(s) on the buffer.
-    nnoremap <space>a :ALEFix<CR>
-
-    nmap <silent> [a <Plug>(ale_previous_wrap)zz
-    nmap <silent> ]a <Plug>(ale_next_wrap)zz
-  " }
-
-  " PLUGIN_ULTISNIPS {
-    let g:UltiSnipsExpandTrigger = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger = '<tab>'
-    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-  " }
-
-  " PLUGIN_GOYO {
-    nnoremap <space>g :Goyo<CR>
-  " }
-" }
-
 " +----------------------------------------------------------------------------+
 " |                              APPEARANCE                                    |
 " +----------------------------------------------------------------------------+
