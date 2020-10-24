@@ -243,6 +243,9 @@ call plug#end()
 
   " Reload the vimrc file.
   nnoremap <space>vr :source $MYVIMRC<CR>
+
+  " Show vim messages.
+  nnoremap <space>vm :messages<CR>
 " }
 
 " Windows {
