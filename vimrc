@@ -62,7 +62,7 @@ let VIMLOCAL = $HOME . '/' . '.local.vim'
 " +----------------------------------------------------------------------------+
 
 " Create the full directory structure.
-let directories = [ DIRECTORY_AUTOLOAD, DIRECTORY_PLUGINS, DIRECTORY_SESSIONS, DIRECTORY_COLORS ]
+let directories = [ DIRECTORY_PLUGINS, DIRECTORY_SESSIONS, DIRECTORY_COLORS ]
 
 for directory in directories
   if !(isdirectory(directory))
