@@ -115,8 +115,16 @@ set sessionoptions=curdir,buffers   " only save the working directory and buffer
 set lazyredraw                      " don't redraw while executing a macro
 
 " Statusline
+set statusline+=\ %f                " show current filename
+set statusline+=\ %m                " show modified flag
+set statusline+=\ %r                " show readonly flag
+set laststatus=2                    " always show the statusline
+
+" Messages
 set noshowmode                      " hide the current mode
 set noshowcmd                       " hide the last command
+set shortmess+=F                    " hide file info while editing file
+set shortmess+=I                    " hide the launch screen
 
 " +----------------------------------------------------------------------------+
 " |                                EDITOR                                      |
