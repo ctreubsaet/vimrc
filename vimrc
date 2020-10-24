@@ -254,12 +254,6 @@ call plug#end()
   nnoremap <C-J> <C-W><C-J>
   nnoremap <C-K> <C-W><C-K>
   nnoremap <C-L> <C-W><C-L>
-
-  " Open splits
-  nnoremap <space><C-H> :leftabove vsplit<CR>:Buffers<CR>
-  nnoremap <space><C-J> :rightbelow split<CR>:Buffers<CR>
-  nnoremap <space><C-K> :leftabove split<CR>:Buffers<CR>
-  nnoremap <space><C-L> :rightbelow vsplit<CR>:Buffers<CR>
 " }
 
 " Lists {
