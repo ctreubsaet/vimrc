@@ -19,7 +19,7 @@ function plugin#goyo#load()
   " }
 
   " Key bindings {
-    nnoremap <space>g :Goyo<CR>
+    nnoremap <space>f :Goyo<CR>
   " }
 
   return 1
