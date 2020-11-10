@@ -221,7 +221,7 @@ set foldmethod=indent               " fold by indentation
   nnoremap Q @@
 
   " Plain text {
-    " Quickly fix a misspelled word.
+    " Quickly fix a misspelling.
     nnoremap <space>ww z=1<CR><CR>
 
     " Toggle the spellchecker.
