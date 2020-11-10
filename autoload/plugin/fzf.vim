@@ -20,14 +20,14 @@ function plugin#fzf#load()
   Plug g:REPOSITORIES[g:PLUGIN_FZF_VIM]
 
   " Key bindings {
-    " Open splits
-    nnoremap <space><C-H> :leftabove vsplit<CR>:Buffers<CR>
-    nnoremap <space><C-J> :rightbelow split<CR>:Buffers<CR>
-    nnoremap <space><C-K> :leftabove split<CR>:Buffers<CR>
-    nnoremap <space><C-L> :rightbelow vsplit<CR>:Buffers<CR>
-
     " Search through the lines of the currently open buffers.
     nnoremap <Bslash><Bslash> :Lines<CR>
+
+    " Open splits
+    nnoremap <Bslash><C-H> :leftabove vsplit<CR>:Buffers<CR>
+    nnoremap <Bslash><C-J> :rightbelow split<CR>:Buffers<CR>
+    nnoremap <Bslash><C-K> :leftabove split<CR>:Buffers<CR>
+    nnoremap <Bslash><C-L> :rightbelow vsplit<CR>:Buffers<CR>
 
     " Search through the path with the word under the cursor.
     nnoremap <Bslash>w :Rg <C-R>=expand("<cword>")<CR><CR>
