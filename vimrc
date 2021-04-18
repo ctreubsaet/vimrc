@@ -186,6 +186,9 @@ set foldmethod=indent               " fold by indentation
 
   " Show vim messages.
   nnoremap <space>vm :messages<CR>
+
+  " Make a hexdump of the current file.
+  nnoremap <space>vh :%!xxd<CR>
 " }
 
 " Windows {
